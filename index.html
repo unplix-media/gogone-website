@@ -76,6 +76,28 @@ section{padding:88px 0}
 .contact-card h2{font-size:clamp(26px,4vw,38px);letter-spacing:-1px;margin-bottom:12px}
 .contact-card p{color:#b9bdc7;margin-bottom:28px}
 .contact-card .btn{background:#fff;color:var(--text)}
+/* reviews */
+.reviews{padding-bottom:72px}
+.rv-rows{display:flex;flex-direction:column;gap:20px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rv-track{display:flex;gap:20px;width:max-content;animation:rv-left 110s linear infinite}
+.rv-track.rev{animation-name:rv-right;animation-duration:125s}
+.rv-rows:hover .rv-track{animation-play-state:paused}
+@keyframes rv-left{to{transform:translateX(-50%)}}
+@keyframes rv-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.rv-card{width:340px;flex-shrink:0;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:24px;display:flex;flex-direction:column;gap:14px;transition:.25s}
+.rv-card:hover{border-color:#cfd3dc;box-shadow:0 12px 32px rgba(17,19,24,.07)}
+.rv-top{display:flex;align-items:center;gap:12px}
+.rv-av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:17px;flex-shrink:0}
+.rv-name{font-weight:700;font-size:15px;line-height:1.25}
+.rv-date{font-size:12.5px;color:var(--muted)}
+.rv-stars{display:flex;gap:2px;color:#f5a623}
+.rv-text{color:#3c4150;font-size:14.5px;line-height:1.65;flex:1}
+.rv-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;padding-top:12px;border-top:1px solid var(--line)}
+.rv-app{background:var(--soft);padding:3px 10px;border-radius:999px;color:var(--muted);font-weight:500;max-width:175px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rv-ver{color:var(--accent);font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.rv-note{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
+@media(prefers-reduced-motion:reduce){.rv-track{animation:none}.rv-rows{overflow-x:auto}}
+@media(max-width:520px){.rv-card{width:290px}}
 /* faq */
 .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
 .faq-list details{border:1px solid var(--line);border-radius:14px;background:#fff;padding:0 22px;transition:.2s}
@@ -104,7 +126,7 @@ footer a:hover{color:var(--text)}
 
 <nav><div class="wrap">
   <a href="#" class="logo" aria-label="Gogone home"><img src="logo.png" alt="Gogone"></a>
-  <div class="links"><a href="#apps">Apps</a><a href="#why">Why Gogone</a><a href="#faq">FAQ</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  <div class="links"><a href="#apps">Apps</a><a href="#reviews">Reviews</a><a href="#why">Why Gogone</a><a href="#faq">FAQ</a><a href="#about">About</a><a href="#contact">Contact</a></div>
   <a class="btn btn-dark" href="https://play.google.com/store/apps/dev?id=5305026108244091967" target="_blank" rel="noopener">Google Play</a>
 </div></nav>
 
@@ -130,6 +152,13 @@ footer a:hover{color:var(--text)}
   <div class="head"><h2>Our Apps</h2><p>Every app is built to solve one real problem, simply.</p></div>
   <div class="grid" id="appGrid"></div>
 </div></section>
+
+<section id="reviews" class="reviews"><div class="wrap">
+  <div class="head"><h2>Loved by our users</h2><p>Real 5-star reviews from Google Play.</p></div>
+</div>
+<div class="rv-rows" id="rvRows"></div>
+<div class="wrap"><p class="rv-note">Public reviews from Google Play, shown as written by users (long ones trimmed with …). Tap a card to open the app on Google Play.</p></div>
+</section>
 
 <section id="why" class="why"><div class="wrap">
   <div class="head"><h2>Why Gogone?</h2><p>What goes into every app we publish.</p></div>
@@ -199,6 +228,18 @@ document.getElementById('iconsRow').innerHTML=imgs;
 document.getElementById('aboutBox').innerHTML=APPS.concat(APPS[0]).map(a=>`<img src="${icon(a)}" alt="">`).join('');
 document.getElementById('appCount').textContent=APPS.length;
 document.getElementById('yr').textContent=new Date().getFullYear();
+const REVIEWS=[["gary manson", "RaiseHigh", "gogone.raisehighvolume", "2 Feb 2025", "Sounds great thanks plenty of volume and I have hearing trouble so it makesa very big difference to me couldn't hear anything till I found this application.i would be happy to tell my friends that I have trouble hearing and this application works great I'm so glad I found this great application on my cell phone…"], ["shradha jaiswal", "RaiseHigh", "gogone.raisehighvolume", "14 Jun 2021", "Loved it ,I was struggling with MX pkayer low volume and other media players other than MX was not providing full video .So I was kind of stuck This was actually I was looking for ,an amplifier .Another pro part is you can switch it on and off at your own disposal without letting it to run forever at the back ground.Well done!!"], ["Abhishek Bisla", "GoGone Tools", "com.gogonewhatstools", "17 Feb 2021", "This app is very good It is secure It help To many things like in this app have status downloader ,text repeater,etc etc Go quickly on any store and download this app🔥"], ["Celline Kalule", "Transparent Pro Live Wallpaper", "com.transparent.pro.livewallpaper", "12 Feb 2025", "Very nice app. I didn't think that it was legit until i used it and worked even better than i expected 😊😊"], ["subramani s", "RaiseHigh", "gogone.raisehighvolume", "9 Dec 2021", "Samsung model Sm315f/Ds perfect working. Boost is set to 39 and phone volume is set to 20 .Super boosted volume for songs, videos,speech and app.clear voice and stereo effect (Use Headphones) .I like this application. Thanks to Gogone team."], ["Niharika Singh", "Voice Lock", "com.gogone.voicelockscreenlock.voicescreenlock", "1 Jun 2024", "It is a good app for me because not use my hand only using for voice and it is very excellent app❤️"], ["Khan Lot", "GoGone Tools", "com.gogonewhatstools", "3 Sep 2026", "Very useful app with clean and practical messaging tools. Smooth performance and easy to use interface. Highly recommended"], ["Safiaana", "RaiseHigh", "gogone.raisehighvolume", "18 May 2021", "Omg, thanks to whoever built this app🖤 My samsung phone had low volume in speaker. So I tried this app. It works so good. I'm never gonna delete this app😌🖤 It just fullfilled my need."], ["Rashmi Gupta", "Transparent Pro Live Wallpaper", "com.transparent.pro.livewallpaper", "29 Sep 2024", "You are the best transparent app on Google Play Store"], ["Madan rajpurohit chatwara", "Voice Lock", "com.gogone.voicelockscreenlock.voicescreenlock", "21 Dec 2024", "This voice lock app is very good for us, please use it for everyone, it is very good."], ["Muhammad Khan", "GoGone Tools", "com.gogonewhatstools", "18 Mar 2023", "This application is very amazing, we can get millions of benefits from it, my salute to the one who made this google whatsapp"], ["Afroz Bhai", "Speaker Cleaner", "com.speakersoundcleaner.gogone", "1 Oct 2023", "Good working this app thank you"], ["Varadarajalu Bashyam", "Hidden Torch", "com.hidden.locker", "2 Jan 2023", "One word ( super and secure) 🔐"], ["Roshan Kumar", "Edge Glow", "com.gogone.edge.glow", "4 Dec 2022", "Bahut badhiya aap hai is app ko aap bhe donlodkaro or apne dost ko bhe bolo 👍👍👍🔥👍"]];
+const COLORS=['#1a73e8','#e8710a','#188038','#a142f4','#d93025','#007b83','#c5221f','#5f6368'];
+const STAR='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.2L12 17.8 5.7 21.4l1.7-7.2L2 9.5l7.1-.6z"/></svg>';
+const CHECK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const rvCard=(r,i)=>`<a class="rv-card" href="https://play.google.com/store/apps/details?id=${r[2]}" target="_blank" rel="noopener" aria-label="Review by ${esc(r[0])} on ${esc(r[1])}">
+ <div class="rv-top"><div class="rv-av" style="background:${COLORS[i%COLORS.length]}">${esc(r[0].trim()[0].toUpperCase())}</div><div><div class="rv-name">${esc(r[0])}</div><div class="rv-date">${r[3]}</div></div></div>
+ <div class="rv-stars" role="img" aria-label="5 out of 5 stars">${STAR.repeat(5)}</div>
+ <p class="rv-text">${esc(r[4])}</p>
+ <div class="rv-foot"><span class="rv-app">${esc(r[1])}</span><span class="rv-ver">${CHECK} Google Play</span></div></a>`;
+const rvRow=(arr,cls)=>`<div class="rv-track ${cls}">${arr.concat(arr).map(r=>rvCard(r,REVIEWS.indexOf(r))).join('')}</div>`;
+document.getElementById('rvRows').innerHTML=rvRow(REVIEWS.filter((_,i)=>i%2===0),'')+rvRow(REVIEWS.filter((_,i)=>i%2===1),'rev');
 </script>
 </body>
 </html>
