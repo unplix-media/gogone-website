@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gogone — Useful Android Apps</title>
 <meta name="description" content="Gogone builds simple, useful Android apps — volume booster, speaker cleaner, voice lock, edge lighting, wallpapers and more. Available on Google Play.">
-<link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -19,7 +18,7 @@ a{color:inherit;text-decoration:none}
 nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-weight:800;font-size:22px;letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
-.logo img{height:30px;width:auto;display:block}
+.logo span{width:30px;height:30px;border-radius:9px;background:var(--text);color:#fff;display:grid;place-items:center;font-size:16px}
 .links{display:flex;gap:28px;font-size:15px;color:var(--muted);font-weight:500}
 .links a:hover{color:var(--text)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;transition:.2s}
@@ -76,6 +75,17 @@ section{padding:88px 0}
 .contact-card h2{font-size:clamp(26px,4vw,38px);letter-spacing:-1px;margin-bottom:12px}
 .contact-card p{color:#b9bdc7;margin-bottom:28px}
 .contact-card .btn{background:#fff;color:var(--text)}
+/* faq */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-list details{border:1px solid var(--line);border-radius:14px;background:#fff;padding:0 22px;transition:.2s}
+.faq-list details[open]{border-color:#cfd3dc;box-shadow:0 8px 24px rgba(17,19,24,.05)}
+.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:600;font-size:16px}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary svg{flex-shrink:0;color:var(--muted);transition:transform .2s}
+.faq-list details[open] summary svg{transform:rotate(180deg)}
+.faq-list details p{color:var(--muted);font-size:15px;padding:0 0 20px}
+.faq-list a{color:var(--accent);font-weight:500}
+@media(max-width:860px){section{padding:64px 0}}
 footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a:hover{color:var(--text)}
@@ -92,8 +102,8 @@ footer a:hover{color:var(--text)}
 <body>
 
 <nav><div class="wrap">
-  <a href="#" class="logo" aria-label="Gogone home"><img src="logo.png" alt="Gogone"></a>
-  <div class="links"><a href="#apps">Apps</a><a href="#why">Why Gogone</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  <a href="#" class="logo"><span>G</span>Gogone</a>
+  <div class="links"><a href="#apps">Apps</a><a href="#why">Why Gogone</a><a href="#faq">FAQ</a><a href="#about">About</a><a href="#contact">Contact</a></div>
   <a class="btn btn-dark" href="https://play.google.com/store/apps/dev?id=5305026108244091967" target="_blank" rel="noopener">Google Play</a>
 </div></nav>
 
@@ -123,10 +133,22 @@ footer a:hover{color:var(--text)}
 <section id="why" class="why"><div class="wrap">
   <div class="head"><h2>Why Gogone?</h2><p>What goes into every app we publish.</p></div>
   <div class="features">
-    <div class="feat"><div class="ic">⚡</div><h4>Lightweight</h4><p>Small download size and smooth performance, even on budget phones.</p></div>
-    <div class="feat"><div class="ic">🎯</div><h4>Easy to use</h4><p>Clean interfaces — open the app and get the job done in a tap.</p></div>
-    <div class="feat"><div class="ic">🔒</div><h4>Privacy first</h4><p>We request only the permissions an app actually needs.</p></div>
-    <div class="feat"><div class="ic">🔄</div><h4>Regular updates</h4><p>Bug fixes and improvements based on your feedback.</p></div>
+    <div class="feat"><div class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div><h4>Lightweight</h4><p>Small download size and smooth performance, even on budget phones.</p></div>
+    <div class="feat"><div class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Easy to use</h4><p>Clean interfaces — open the app and get the job done in a tap.</p></div>
+    <div class="feat"><div class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h4>Privacy first</h4><p>We request only the permissions an app actually needs.</p></div>
+    <div class="feat"><div class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div><h4>Regular updates</h4><p>Bug fixes and improvements based on your feedback.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="head"><h2>Frequently Asked Questions</h2><p>Quick answers about Gogone and our apps.</p></div>
+  <div class="faq-list">
+    <details><summary>What is Gogone?<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Gogone is an independent Android developer that publishes simple, useful utility and personalization apps on Google Play.</p></details>
+    <details><summary>Where can I download the apps?<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>All Gogone apps are available on Google Play. Tap any app card above, or visit our <a href="https://play.google.com/store/apps/dev?id=5305026108244091967" target="_blank" rel="noopener">developer page</a>.</p></details>
+    <details><summary>Are the apps free to use?<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Please check each app's Google Play page for current pricing, ads and in-app purchase details.</p></details>
+    <details><summary>Why do some apps ask for permissions?<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Apps only request permissions needed for their main feature, for example the microphone for Voice Lock. You can read more in our <a href="privacy.html">Privacy Policy</a>.</p></details>
+    <details><summary>How do I report a bug or suggest a feature?<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Email us using the contact section below, or leave a review on the app's Google Play page. We read every message.</p></details>
+    <details><summary>Which Android versions are supported?<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><p>Supported Android versions differ for each app. The requirements are listed on every app's Google Play page.</p></details>
   </div>
 </div></section>
 
